@@ -1,6 +1,7 @@
 // Copyright HobberCode 2018
 
 #include "OpenDoor.h"
+#include "GameFramework/Actor.h"
 
 
 // Sets default values for this component's properties
@@ -20,7 +21,13 @@ void UOpenDoor::BeginPlay()
 	Super::BeginPlay();
 
 	// ...
+
+	AActor* Object = GetOwner();
 	
+	FRotator NewRotation = FRotator(0.f, -60.0f, 0.f);
+
+	Object->SetActorRotation(NewRotation);
+
 }
 
 
