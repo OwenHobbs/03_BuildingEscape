@@ -38,8 +38,12 @@ private:
 	UPROPERTY(EditAnywhere)
 	float OpenAngle = -90.f;
 
-	float LastDoorOpenTime;
+	UPROPERTY(EditAnywhere)
+	float TriggerMass = 40.f;
 
-	AActor* ActorThatOpens;
-	AActor* Owner;
+	float LastDoorOpenTime;
+	AActor* Owner; // the owning door
+
+	// Returns total mass in kg
+	float GetTotalMassOfActorsOnPlate();
 };
