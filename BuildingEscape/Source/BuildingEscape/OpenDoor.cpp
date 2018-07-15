@@ -39,28 +39,14 @@ void UOpenDoor::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompon
 	// Open the door when enough mass is on trigger plate
 	if (GetTotalMassOfActorsOnPlate() >= TriggerMass) 
 	{
-		OpenDoor();
-		LastDoorOpenTime = GetWorld()->GetTimeSeconds();
+		// Open's the door
+		OnOpen.Broadcast();
+	}
+	else {
+		// Close's the door
+		OnClose.Broadcast();
 	}
 
-	// Check if it's time to close the door
-	float CurrentTime = GetWorld()->GetTimeSeconds();
-	if (CurrentTime - LastDoorOpenTime > DoorCloseDelay)
-	{
-		CloseDoor();
-	}
-
-}
-
-void UOpenDoor::OpenDoor()
-{
-	//Owner->SetActorRotation(FRotator(0.f, OpenAngle, 0.f));
-	OnOpenRequest.Broadcast();
-}
-
-void UOpenDoor::CloseDoor()
-{
-	Owner->SetActorRotation(FRotator(0.f, 0.f, 0.f));
 }
 
 float UOpenDoor::GetTotalMassOfActorsOnPlate() {
