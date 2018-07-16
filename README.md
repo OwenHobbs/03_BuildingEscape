@@ -1,1 +1,2 @@
-This is my repository for storing my source code for the game I am making Escape.
+# Building Escape
+A room the you have to figure out how to escape.
